@@ -1,6 +1,7 @@
 #!/bin/sh
 pip install pyserial
 pip install -U matplotlib
+apt-get install python-cairo -y
 apt-get update
 apt-get install python-qt4 -y
 pip install XlsxWriter
