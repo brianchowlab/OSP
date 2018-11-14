@@ -1,6 +1,6 @@
 # OSP: An Open-source Plate Reader 
 <p align="center">
-<img align="center" src="https://github.com/KokoIsLoko/OSP/blob/master/Software/Graphical%20Files/repoImage.png" width="486" height="245">
+<img align="center" src="https://github.com/brianchowlab/OSP/blob/master/Software/Graphical%20Files/repoImage.png" width="486" height="245">
 </p>
 
 ### Introduction
@@ -50,7 +50,7 @@ $ conda install -c anaconda pyserial
 
 **Step 5.** *Clone the OSP repository* - In *Anaconda Prompt* type the following line of code:
 ```sh
-$ git clone https://github.com/KokoIsLoko/OSP.git
+$ git clone https://github.com/brianchowlab/OSP.git
 ```
 
 **Step 6.** *Install Arduino IDE* -  Visit the following [LINK](https://www.arduino.cc/en/Main/Software) to download the latest Arduino IDE. 
