@@ -33,22 +33,22 @@ Installation of OSP software dependencies on any Windows/Mac device is accomplis
 **Step 1.** *Install Anaconda* - Visit the following [LINK](https://www.anaconda.com/download/) to download the Anaconda Software.    
 > (**!!CAVEAT!!** Be sure to download the version for Python 2.X and for your specific OS environment (Windows/Mac).
 
-**Step 2.** *Install the PyQt4 package* - Open *Anaconda Prompt* (installed with Anaconda) and type the following line of code:
+**Step 2.** *Install the PyQt4 package* - Open *Anaconda Prompt* (installed with Anaconda) as an Administrator. To do this, find the Anaconda Prompt application on your computer, *right-click* it and select *Run as administrator* and type the following line of code (leave out the $):
 ```sh
 $ conda install pyqt=4 -y
 ```
 
-**Step 3.** *Install the Seabreeze package* - In *Anaconda Prompt* type the following line of code:
+**Step 3.** *Install the Seabreeze package* - In *Anaconda Prompt* type the following line of code (leave out the $):
 ```sh
 $ conda install -c poehlmann python-seabreeze -y
 ```
 
-**Step 4.** *Install the PySerial package* - In *Anaconda Prompt* type the following line of code:
+**Step 4.** *Install the PySerial package* - In *Anaconda Prompt* type the following line of code (leave out the $):
 ```sh
 $ conda install -c anaconda pyserial -y
 ```
 
-**Step 5.** *Clone the OSP repository* - In *Anaconda Prompt* type the following line of code:
+**Step 5.** *Clone the OSP repository* - In *Anaconda Prompt* type the following line of code (leave out the $):
 ```sh
 $ git clone https://github.com/brianchowlab/OSP.git
 ```
@@ -59,7 +59,7 @@ $ git clone https://github.com/brianchowlab/OSP.git
 
 **Step 8.** ***(ONLY WINDOWS USERS)*** *Setting up Seabreeze Drivers* - Visit the following [LINK](https://github.com/ap--/python-seabreeze/blob/master/misc/windows-driver-files.zip) and download the Windows Seabreeze drivers zip file.  Extract it to a known location.  Connect your computer to the OSP device via USB.  Then open up *Device Manager* on your Windows machine, find the spectrometer in the list (most likely called STS), *right click it* and choose *Update Driver Software*.  A windows will pop up. Navigate to the folder where you extracted the Windows Seabreeze drivers file and select it. 
 
-**Step 9.** *Opening the User Interface* - In order to start utilizing the OSP device, make sure the device is **turned on** and plugged in via USB to a computer.  Open up *Anaconda Prompt* and write the following lines of code:
+**Step 9.** *Opening the User Interface* - In order to start utilizing the OSP device, make sure the device is **turned on** and plugged in via USB to a computer.  Open up *Anaconda Prompt* and write the following lines of code (leave out the $):
 ```sh
 $ cd  "OSP\Software\Python Files"
 $ python GUI.py
