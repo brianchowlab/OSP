@@ -1,0 +1,5 @@
+# Files & directories to ignore
+.idea
+*.pyc
+*.xlsx
+*.p
