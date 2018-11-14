@@ -68,7 +68,7 @@ $ python GUI.py
 ### Installation (Raspberry-Pi Image)
 The simplest way to install the OSP software on a Raspberry-Pi is by downloading and installing the OSP.img file provided. In order to do this, you will need to have a completely empty 16GB Micro SD Card. If the card is not empty, all of its contents will be deleted in the installation of the OSP.img file. In addition, the first 3 installation steps need to be performed on a computer/laptop with an SD card slot. 
 
-**Step 1.** *Download & Unzip the OSP.img* - Visit the following [LINK](https://www.arduino.cc/en/Main/Software) and download the *OSP.img* file. Once downloaded unzip the file to a known location. 
+**Step 1.** *Download & Unzip the OSP.img* - Visit the following [LINK](https://www.dropbox.com/s/7g2e63knupe5y7j/osp_rasp.img?dl=0) and download the *OSP.img* file. Once downloaded unzip the file to a known location. 
 
 **Step 2.** *Download & Install the Etcher program* - Visit the following [LINK](https://www.balena.io/etcher/) and download the *Etcher* program for your specific operating system. 
 
