@@ -450,7 +450,7 @@ class auxScreen(QtGui.QWidget):
 
     def retranslateUi(self):
         self.setWindowTitle(_translate("self", "OSP", None))
-        self.setWindowIcon(QtGui.QIcon("../Python Files/Images/logo_icon.png"))
+        self.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
         self.title_label.setText(_translate("self", "<html><head/><body><p align=\"center\">AUXILIARY CONTROL</p></body></html>", None))
         self.aux_led_checkBox.setText(_translate("self", "AUX LED", None))
         self.ctrl1_checkBox.setText(_translate("self", "Port 1", None))

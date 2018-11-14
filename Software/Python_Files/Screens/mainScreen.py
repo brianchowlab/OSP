@@ -52,7 +52,7 @@ class mainScreen(QtGui.QWidget):
         self.logo_label = QtGui.QLabel(self.layoutWidget)
         self.logo_label.setMaximumSize(QtCore.QSize(400, 180))
         self.logo_label.setText(_fromUtf8(""))
-        self.logo_label.setPixmap(QtGui.QPixmap(_fromUtf8("../Python Files/Images/final_logo.png")))
+        self.logo_label.setPixmap(QtGui.QPixmap(_fromUtf8("Images/final_logo.png")))
         self.logo_label.setScaledContents(True)
         self.logo_label.setAlignment(QtCore.Qt.AlignCenter)
         self.logo_label.setObjectName(_fromUtf8("logo_label"))
@@ -138,7 +138,7 @@ class mainScreen(QtGui.QWidget):
         self.settings_button.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);\n"
 "font: 75 14pt \"Roboto\";"))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("../Python Files/Images/gear_logo.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("Images/gear_logo.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.settings_button.setIcon(icon)
         self.settings_button.setIconSize(QtCore.QSize(25, 25))
         self.settings_button.setObjectName(_fromUtf8("settings_button"))
@@ -155,7 +155,7 @@ class mainScreen(QtGui.QWidget):
 
     def retranslateUi(self):
         self.setWindowTitle(_translate("self", "OSP", None))
-        self.setWindowIcon(QtGui.QIcon("../Python Files/Images/logo_icon.png"))
+        self.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
         self.start_button.setText(_translate("self", "START", None))
         self.calibrate_button.setText(_translate("self", "CALIBRATE ", None))
         self.plateOut_button.setText(_translate("self", "PLATE OUT", None))

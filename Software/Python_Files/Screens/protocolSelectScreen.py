@@ -150,7 +150,7 @@ class protocolSelectScreen(QtGui.QWidget):
         self.reset_button.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);\n"
 "font: 75 14pt \"Roboto\";"))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("../../../PBPR_V2/Images/gear_logo.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("Images/gear_logo.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.reset_button.setIcon(icon)
         self.reset_button.setIconSize(QtCore.QSize(25, 25))
         self.reset_button.setObjectName(_fromUtf8("reset_button"))
@@ -167,7 +167,7 @@ class protocolSelectScreen(QtGui.QWidget):
         self.settings_button.setStyleSheet(_fromUtf8("background-color: rgb(255, 255, 255);\n"
 "font: 75 14pt \"Roboto\";"))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(_fromUtf8("../Python Files/Images/gear_logo.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8("Images/gear_logo.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.settings_button.setIcon(icon1)
         self.settings_button.setIconSize(QtCore.QSize(25, 25))
         self.settings_button.setObjectName(_fromUtf8("settings_button"))
@@ -182,7 +182,7 @@ class protocolSelectScreen(QtGui.QWidget):
 
     def retranslateUi(self):
         self.setWindowTitle(_translate("self", "OSP", None))
-        self.setWindowIcon(QtGui.QIcon("../Python Files/Images/logo_icon.png"))
+        self.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
         self.abs_button.setText(_translate("self", "Absorbance", None))
         self.flr_button.setText(_translate("self", "Fluorescence", None))
         self.aux_button.setText(_translate("self", "Auxiliary Control", None))

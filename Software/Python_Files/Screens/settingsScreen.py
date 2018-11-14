@@ -121,7 +121,7 @@ class settingsScreen(QtGui.QWidget):
         self.led_logo_2 = QtGui.QLabel(self.layoutWidget)
         self.led_logo_2.setMaximumSize(QtCore.QSize(200, 200))
         self.led_logo_2.setText(_fromUtf8(""))
-        self.led_logo_2.setPixmap(QtGui.QPixmap(_fromUtf8("../Python Files/Images/botttomLed.png")))
+        self.led_logo_2.setPixmap(QtGui.QPixmap(_fromUtf8("Images/botttomLed.png")))
         self.led_logo_2.setScaledContents(True)
         self.led_logo_2.setAlignment(QtCore.Qt.AlignCenter)
         self.led_logo_2.setObjectName(_fromUtf8("led_logo_2"))
@@ -316,7 +316,7 @@ class settingsScreen(QtGui.QWidget):
 
     def retranslateUi(self):
         self.setWindowTitle(_translate("self", "OSP", None))
-        self.setWindowIcon(QtGui.QIcon("../Python Files/Images/logo_icon.png"))
+        self.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
         self.back_button.setText(_translate("self", "Back", None))
         self.title_label.setText(_translate("self", "<html><head/><body><p align=\"center\">SETTINGS</p></body></html>", None))
         self.label_5.setText(_translate("self", "Set the wavelength of individual LEDs for excitement of wells.", None))

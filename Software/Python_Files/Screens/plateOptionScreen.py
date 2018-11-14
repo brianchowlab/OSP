@@ -109,7 +109,7 @@ class plateOptionScreen(QtGui.QWidget):
         self.plate24_label.setSizePolicy(sizePolicy)
         self.plate24_label.setMaximumSize(QtCore.QSize(320, 200))
         self.plate24_label.setText(_fromUtf8(""))
-        self.plate24_label.setPixmap(QtGui.QPixmap(_fromUtf8("../Python Files/Images/wellPlate24.svg")))
+        self.plate24_label.setPixmap(QtGui.QPixmap(_fromUtf8("Images/wellPlate24.svg")))
         self.plate24_label.setScaledContents(True)
         self.plate24_label.setObjectName(_fromUtf8("plate24_label"))
         self.horizontalLayout.addWidget(self.plate24_label)
@@ -118,7 +118,7 @@ class plateOptionScreen(QtGui.QWidget):
         self.plate96_label = QtGui.QLabel(self.layoutWidget)
         self.plate96_label.setMaximumSize(QtCore.QSize(320, 200))
         self.plate96_label.setText(_fromUtf8(""))
-        self.plate96_label.setPixmap(QtGui.QPixmap(_fromUtf8("../Python Files/Images/wellPlate96.svg")))
+        self.plate96_label.setPixmap(QtGui.QPixmap(_fromUtf8("Images/wellPlate96.svg")))
         self.plate96_label.setScaledContents(True)
         self.plate96_label.setObjectName(_fromUtf8("plate96_label"))
         self.horizontalLayout.addWidget(self.plate96_label)
@@ -166,7 +166,7 @@ class plateOptionScreen(QtGui.QWidget):
 
     def retranslateUi(self):
         self.setWindowTitle(_translate("self", "OSP", None))
-        self.setWindowIcon(QtGui.QIcon("../Python Files/Images/logo_icon.png"))
+        self.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
         self.back_button.setText(_translate("self", "Back", None))
         self.title_label.setText(_translate("self", "<html><head/><body><p align=\"center\"><span style=\" font-size:28pt;\">CHOOSE A PLATE SIZE</span></p></body></html>", None))
         self.well24_button.setText(_translate("self", "24 Well", None))

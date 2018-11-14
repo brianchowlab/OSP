@@ -286,7 +286,7 @@ class flrScreen(QtGui.QWidget):
 
     def retranslateUi(self):
         self.setWindowTitle(_translate("self", "OSP", None))
-        self.setWindowIcon(QtGui.QIcon("../Python Files/Images/logo_icon.png"))
+        self.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
         self.back_button.setText(_translate("self", "Back", None))
         self.title_label.setText(_translate("self", "<html><head/><body><p align=\"center\">FLOURESCENCE</p></body></html>", None))
         self.led_label.setText(_translate("self", "Excitation LED :", None))

@@ -180,7 +180,7 @@ class absScreen(QtGui.QWidget):
 
     def retranslateUi(self):
         self.setWindowTitle(_translate("self", "OSP", None))
-        self.setWindowIcon(QtGui.QIcon("../Python Files/Images/logo_icon.png"))
+        self.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
         self.back_button.setText(_translate("self", "Back", None))
         self.title_label.setText(_translate("self", "<html><head/><body><p align=\"center\">ABSORBANCE</p></body></html>", None))
         self.expTime_label.setText(_translate("self", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt;\">Exposure Time : </span></p></body></html>", None))
