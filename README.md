@@ -74,7 +74,12 @@ The simplest way to install the OSP software on a Raspberry-Pi is by downloading
 
 **Step 3.** *Install the OSP.img onto the SD Card* - Insert your empty SD card into the computer. Start up the Etcher software and follow the on screen instructions in order to install the OSP.img onto the card. **This process can take up to 10 minutes**
 
-**Step 4.** *Opening the User Interface* - Once the OSP.img file is installed, insert it into your Raspberry-Pi (which should be connected to the active OSP device, touch-screen/monitor, keyboard & mouse). Turn the Raspberry-Pi on and when it is booted open up the Terminal. To activate the User Interface type the following:
+**Step 4.** *Update OSP repository* - Once the OSP.img file is installed, insert it into your Raspberry-Pi (which should be connected to the active OSP device, touch-screen/monitor, keyboard & mouse). Turn the Raspberry-Pi on and when it is booted open up the Terminal. Type the following and close the Terminal when it is finished:
+```sh
+$ cd OSP
+$ git pull origin master
+```
+**Step 5.** *Running the Usert Interface* - To activate the User Interface make sure the OSP device is turned on and connected to the Raspberry-Pi via USB. Open up the Terminal and type the following:
 ```sh
 $ cd  "OSP\Software\Python Files"
 $ sudo python GUI.py
