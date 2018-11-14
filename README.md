@@ -35,17 +35,17 @@ Installation of OSP software dependencies on any Windows/Mac device is accomplis
 
 **Step 2.** *Install the PyQt4 package* - Open *Anaconda Prompt* (installed with Anaconda) and type the following line of code:
 ```sh
-$ conda install pyqt=4
+$ conda install pyqt=4 -y
 ```
 
 **Step 3.** *Install the Seabreeze package* - In *Anaconda Prompt* type the following line of code:
 ```sh
-$ conda install -c poehlmann python-seabreeze
+$ conda install -c poehlmann python-seabreeze -y
 ```
 
 **Step 4.** *Install the PySerial package* - In *Anaconda Prompt* type the following line of code:
 ```sh
-$ conda install -c anaconda pyserial
+$ conda install -c anaconda pyserial -y
 ```
 
 **Step 5.** *Clone the OSP repository* - In *Anaconda Prompt* type the following line of code:
@@ -55,7 +55,7 @@ $ git clone https://github.com/brianchowlab/OSP.git
 
 **Step 6.** *Install Arduino IDE* -  Visit the following [LINK](https://www.arduino.cc/en/Main/Software) to download the latest Arduino IDE. 
 
-**Step 7.** *Upload OSP script onto Arduino UNO* - Using the Arduino IDE open up the OSP Arduino script located in the cloned respository folder *OSP\Software\Arduino Files\OSP_Serial_Communication*.  Make sure the Arduino is connected via USB and click the **UPLOAD** button in the Arduino IDE. 
+**Step 7.** *Upload OSP script onto Arduino UNO* - Using the Arduino IDE open up the OSP Arduino script located in the cloned respository folder *OSP\Software\Arduino Files\OSP_Serial_Communication*.  Make sure the Arduino is to the OSP device and that the OSP device is connected to your computer via USB and click the **UPLOAD** button in the Arduino IDE. 
 
 **Step 8.** ***(ONLY WINDOWS USERS)*** *Setting up Seabreeze Drivers* - Visit the following [LINK](https://github.com/ap--/python-seabreeze/blob/master/misc/windows-driver-files.zip) and download the Windows Seabreeze drivers zip file.  Extract it to a known location.  Connect your computer to the OSP device via USB.  Then open up *Device Manager* on your Windows machine, find the spectrometer in the list (most likely called STS), *right click it* and choose *Update Driver Software*.  A windows will pop up. Navigate to the folder where you extracted the Windows Seabreeze drivers file and select it. 
 
