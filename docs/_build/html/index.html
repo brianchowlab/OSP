@@ -1,0 +1,418 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to Getting Started with Sphinx’s documentation! &#8212; OSP 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-System">
+<span id="welcome-to-getting-started-with-sphinx-s-documentation"></span><h1>Welcome to Getting Started with Sphinx’s documentation!<a class="headerlink" href="#module-System" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="system-py">
+<h2>System.py<a class="headerlink" href="#system-py" title="Permalink to this headline">¶</a></h2>
+<p>The core module of my example project</p>
+<dl class="class">
+<dt id="System.System">
+<em class="property">class </em><code class="descclassname">System.</code><code class="descname">System</code><a class="headerlink" href="#System.System" title="Permalink to this definition">¶</a></dt>
+<dd><p>An example docstring for a class definition.</p>
+<dl class="method">
+<dt id="System.System.add_absorbance_protocol">
+<code class="descname">add_absorbance_protocol</code><span class="sig-paren">(</span><em>exp_time</em>, <em>label</em>, <em>plate_index</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.add_absorbance_protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to add an Absorbance protocol to the list of protocols to execute for a particular PlateConfiguration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>{integer} -- exposure time with which to collect absorbance spectrum in milliseconds</strong> (<em>exp_time</em>) – </li>
+<li><strong>{string} -- protocol label</strong><strong>, </strong><strong>should be set to 'Absorbance'</strong> (<em>label</em>) – </li>
+<li><strong>{integer} -- index of the PlateConfiguration object in self.plateList in which to select wells</strong> (<em>plate_index</em>) – </li>
+<li><strong>{integer} -- the index of the protocol in the existing list of protocols of the plate configuration object.</strong> (<em>order</em>) – </li>
+<li><strong>this is the first protocol that is being added to the PlateConfiguration object then the order is equal to zero. If it is the second</strong><strong>, </strong><strong>then the order is equal to 1 and so on.</strong> (<em>If</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.add_auxiliary_protocol">
+<code class="descname">add_auxiliary_protocol</code><span class="sig-paren">(</span><em>aux_index</em>, <em>duration</em>, <em>label</em>, <em>plate_index</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.add_auxiliary_protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to add an Auxiliary protocol to the list of protocols to execute for a particular PlateConfiguration.
+The auxiliary protocol type is defined by the aux_index input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>{integer} -- possible values 1</strong><strong>, </strong><strong>2</strong><strong>, </strong><strong>3</strong><strong> or </strong><strong>4 representing which auxiliary port will be triggerd on.</strong> (<em>aux_index</em>) – </li>
+<li><strong>{integer} -- duration for how long to trigger the selected auxiliary port for.</strong> (<em>duration</em>) – </li>
+<li><strong>{string} -- protocol label</strong><strong>, </strong><strong>should be set to 'Auxiliary'</strong> (<em>label</em>) – </li>
+<li><strong>{integer} -- index of the PlateConfiguration object in self.plateList in which to select wells</strong> (<em>plate_index</em>) – </li>
+<li><strong>{integer} -- the index of the protocol in the existing list of protocols of the plate configuration object.</strong> (<em>order</em>) – </li>
+<li><strong>this is the first protocol that is being added to the PlateConfiguration object then the order is equal to zero. If it is the second</strong><strong>, </strong><strong>then the order is equal to 1 and so on.</strong> (<em>If</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.add_fluorescence_protocol">
+<code class="descname">add_fluorescence_protocol</code><span class="sig-paren">(</span><em>exp_time</em>, <em>led_index</em>, <em>wavelength_led_1</em>, <em>wavelength_led_2</em>, <em>wavelength_led_3</em>, <em>label</em>, <em>plate_index</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.add_fluorescence_protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to add an Fluorescence protocol to the list of protocols to execute for a particular PlateConfiguration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>{integer} -- exposure time with which to collect absorbance spectrum in milliseconds</strong> (<em>exp_time</em>) – </li>
+<li><strong>{integer} -- possible values 1</strong><strong>,</strong><strong>2</strong><strong> or </strong><strong>3 representing which LED to use for protocol. Only 1 LED per protocol.</strong> (<em>led_index</em>) – </li>
+<li><strong>{integer} -- wavelength of LED 1</strong> (<em>wavelength_led_1</em>) – </li>
+<li><strong>{integer} -- wavelength of LED 2</strong> (<em>wavelength_led_2</em>) – </li>
+<li><strong>{integer} -- wavelength of LED 3</strong> (<em>wavelength_led_3</em>) – </li>
+<li><strong>{string} -- protocol label</strong><strong>, </strong><strong>should be set to 'Fluorescence'</strong> (<em>label</em>) – </li>
+<li><strong>{integer} -- index of the PlateConfiguration object in self.plateList in which to select wells</strong> (<em>plate_index</em>) – </li>
+<li><strong>{integer} -- the index of the protocol in the existing list of protocols of the plate configuration object.</strong> (<em>order</em>) – </li>
+<li><strong>this is the first protocol that is being added to the PlateConfiguration object then the order is equal to zero. If it is the second</strong><strong>, </strong><strong>then the order is equal to 1 and so on.</strong> (<em>If</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.clear_wells">
+<code class="descname">clear_wells</code><span class="sig-paren">(</span><em>plate_index</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.clear_wells" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to unselect (clear) all the wells from the PlateConfiguration object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{integer} -- index of the PlateConfiguration object in self.plateList in which to unselect wells</strong> (<em>plate_index</em>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.get_current_plate_type">
+<code class="descname">get_current_plate_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#System.System.get_current_plate_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to attain the type of plate (24 or 96 well) of the current PlateConfiguration object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">integer – plate type of current PlateConfiguration object being edited. Returns 24 (for 24-well plate)
+or 96 (for 96-well plate).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.get_plate_count">
+<code class="descname">get_plate_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#System.System.get_plate_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to attain the number of PlateConfiguration objects added to the system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">integer – number of PlateConfiguration objects in self.plateList.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.get_selected_wells">
+<code class="descname">get_selected_wells</code><span class="sig-paren">(</span><em>plate_index</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.get_selected_wells" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all the wells which were selected for protocol execution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>{integer} -- index of the PlateConfiguration object in self.plateList from which the selected wells</strong> (<em>plate_index</em>) – </li>
+<li><strong>to be extracted from.</strong> (<em>are</em>) – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[list] – Each element in list is the label (as a string) of a well which was selected. If well A1 was selected,
+then the list would contain the element ‘A1’.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.get_settings">
+<code class="descname">get_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#System.System.get_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current settings of the system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[list] – The list is made up of four elements. The first 3 elements represent the wavelengths of LEDs 1, 2, and 3 respectively.
+The fourth element of the list represents the number of scans to average.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.load_calibration_data">
+<code class="descname">load_calibration_data</code><span class="sig-paren">(</span><em>platetype</em>, <em>filename=''</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.load_calibration_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the most important thing about a person.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>platetype</strong> – A string indicating the name of the person.</li>
+<li><strong>filename</strong> – A filename of the calibration data</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.load_settings">
+<code class="descname">load_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#System.System.load_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to automatically load the saved settings for the OSP software. Settings include
+the light source wavelengths and the number of scans to average. The settings are stored
+as a pickle file in System Settings directory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.load_well_labels">
+<code class="descname">load_well_labels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#System.System.load_well_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the necessary list to store the well labels in form of ‘well_rowcolumn’. For example
+the entry in the list for A2 would be ‘well_A2’. Also creates a list to store the selection status
+of a particular well as either ‘OFF’ (not selected) or ‘ON’ (selected).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.remove_plate_object">
+<code class="descname">remove_plate_object</code><span class="sig-paren">(</span><em>plate_numb</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.remove_plate_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to remove a PlateConfiguration object from self.plateList. If object is removed
+the indices of all other plates are fixed to account for the removal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>{integer} -- integer representing the index of the PlateConfiguration object in</strong> (<em>plate_numb</em>) – </li>
+<li><strong>For this variable</strong><strong>, </strong><strong>an input of 1 would represent the first entry in self.plateList.</strong> (<em>self.plateList.</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.save_settings">
+<code class="descname">save_settings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#System.System.save_settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to automatically save the system settings for the OSP software. Settings include
+the light source wavelengths and the number of scans to average. The settings are stored
+as a pickle file in System Settings directory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.select_all_wells">
+<code class="descname">select_all_wells</code><span class="sig-paren">(</span><em>plate_index</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.select_all_wells" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to select all the wells in the PlateConfiguration object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{integer} -- index of the PlateConfiguration object in self.plateList in which to select wells</strong> (<em>plate_index</em>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.select_wells">
+<code class="descname">select_wells</code><span class="sig-paren">(</span><em>plate_index</em>, <em>well_list</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.select_wells" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function used to select the wells for protocol execution in a specific PlateConfiguration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>{integer} -- index of the PlateConfiguration object in self.plateList in which to select wells</strong> (<em>plate_index</em>) – </li>
+<li><strong>{list} -- a list of the well indices</strong><strong>, </strong><strong>where well A1 is indexed at 0 and indices increase along the rows.</strong> (<em>well_list</em>) – </li>
+<li><strong>example</strong><strong>, </strong><strong>in a 24-well plate</strong><strong>, </strong><strong>the indices of the first row wells A1-A6 = 0-5</strong><strong>,  </strong><strong>second row B1-B6 = 6-11</strong><strong>, </strong><strong>etc</strong> (<em>For</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.set_current_plate">
+<code class="descname">set_current_plate</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.set_current_plate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to keep track of the index of the PlateConfiguration which is being edited.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>{integer} -- index of the PlateConfiguration object in the self.plateList list</strong> (<em>index</em>) – </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.set_plate_type">
+<code class="descname">set_plate_type</code><span class="sig-paren">(</span><em>platetype</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.set_plate_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function initializes a new PlateConfiguration object which will be used to keep track
+of which wells are selected and which protocols to execute for the selected wells. The newly created
+PlateConfiguration object is added to a list allowing it be accessed later on. This function is executed
+every time a new set of protocols is desired to be run on a different group of wells (a new PlateConfiguration needed).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>platetype</strong> – possible value of 24 (for 24-well plate) or 96 (for 96-well plate).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="System.System.turn_kinetic_tracking_on">
+<code class="descname">turn_kinetic_tracking_on</code><span class="sig-paren">(</span><em>method</em>, <em>interval</em>, <em>duration</em>, <em>reps</em>, <em>label</em>, <em>plate_index</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#System.System.turn_kinetic_tracking_on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to turn on the system kinetic mode. This enables the user to input protocols into a kinetic sequence
+which can be looped for a desired time period or repeated a specific number of times.</p>
+<p>The interval method allows the user to perform a series of protocols in intervals for a specified duration of time.
+For example, executing an Absorbance protocol very 30 seconds for 20 minutes.</p>
+<p>The repetiion method allows the user to repeatedly perform a series of protocols. For example, executing an Absorbance
+protocol 10 times in a row.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>{integer} -- possible value 1</strong> (<em>method</em>) – </li>
+<li><strong>{integer} --  interval time for a kinetic protocol</strong> (<em>interval</em>) – </li>
+<li><strong>{integer} -- the duration to perform the kinetic protocol sequence</strong> (<em>duration</em>) – </li>
+<li><strong>{integer} -- number of times to repeat the kinetic protocol sequence</strong> (<em>reps</em>) – </li>
+<li><strong>{string} -- protocol label</strong><strong>, </strong><strong>should be set to 'Kinetic'</strong> (<em>label</em>) – </li>
+<li><strong>{integer} -- index of the PlateConfiguration object in self.plateList in which to select wells</strong> (<em>plate_index</em>) – </li>
+<li><strong>{integer} -- the index of the protocol in the existing list of protocols of the plate configuration object.</strong> (<em>order</em>) – </li>
+<li><strong>this is the first protocol that is being added to the PlateConfiguration object then the order is equal to zero. If it is the second</strong><strong>, </strong><strong>then the order is equal to 1 and so on.</strong> (<em>If</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">OSP</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Karol Szymula.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
