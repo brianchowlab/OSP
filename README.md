@@ -4,7 +4,7 @@
 </p>
 
 ### Introduction
-OSP is a low-cost open-source plate reader built out of the Chow Lab at the University of Pennsylvania. The software provided in this repository is required to access the full functionailty of a built OSP device. For information regarding how to build this device and details about how it works, please refer to the ACS: BioChemistry manuscript available at this LINK.
+OSP is a low-cost open-source plate reader built out of the Chow Lab at the University of Pennsylvania. The software provided in this repository is required to access the full functionailty of a built OSP device. For information regarding how to build this device and details about how it works, please refer to the ACS: BioChemistry manuscript available at this [LINK](https://www.biorxiv.org/content/early/2018/09/12/413781).
 
 ## GETTING STARTED 
 ### Dependencies
