@@ -340,7 +340,7 @@ class Machine(object):
             print 'Machine selected wells'
             if plate.well_numb == 24:
                 motor_positions = positions24
-                print motor_positions
+                #print motor_positions
             elif plate.well_numb == 96:
                 motor_positions = positions96
 
@@ -354,7 +354,7 @@ class Machine(object):
                 elif plate.well_numb == 96:
                     position = str(format(motor_positions[selected_well_index[w]][0], '.2f')) + \
                                str(format(motor_positions[selected_well_index[w]][1], '.2f'))
-                print 'M' + position + ';'
+                #print 'M' + position + ';'
                 self.move_plate(position)
                 if w != 0:
                     current_row = plate_index[plate_numb]
@@ -389,6 +389,7 @@ class Machine(object):
                                     worksheet.write(current_row, i + 1, intensities[i])
                                 if p == 0:
                                     plate_index.append(current_row)
+
                                 current_row += len(selected_well_index) + 3
                         else:
                             if p != 0:

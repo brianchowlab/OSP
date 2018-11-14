@@ -6,10 +6,10 @@ class Fluorescence(Protocol, object):
                                     wavelength_led_3, label, plate, order):
         super(Fluorescence, self).__init__(label, plate, order)
         self.__expTime = expTime  # Integer
-        # self.__lightInt = lightInt  # Integer
         self.__ledIndex = ledIndex  # String
         self.__wavelength = [wavelength_led_1, wavelength_led_2, wavelength_led_3] # List of Integers
-        self.excel_length = 5
+        self.excel_length = 4
+        self.led_count = 0
 
     def get_full_description(self):
         print "--- OVERALL DESCRIPTION ---"
@@ -40,36 +40,47 @@ class Fluorescence(Protocol, object):
 
     def initialize_excel_section(self, worksheet, merge_format, header_format, current_row):
         worksheet.merge_range(current_row, 0, current_row, 4, '----------- FLUORESCENCE -----------', merge_format)
-        worksheet.merge_range(current_row+ 1, 0, current_row + 1, 1, 'Exposure Time:', merge_format)
+        worksheet.merge_range(current_row + 1, 0, current_row + 1, 1, 'Exposure Time:', merge_format)
         worksheet.merge_range(current_row + 1, 2, current_row + 1, 3, str(self.__expTime), merge_format)
         worksheet.write(current_row + 1, 4, '(ms)')
-        led_count = 2
+        current_row += 1
         if self.__ledIndex[0] == '1':
-            worksheet.merge_range(current_row + led_count, 0, current_row + led_count, 1, 'LED:', merge_format)
-            worksheet.merge_range(current_row + led_count, 2, current_row + led_count, 3, str(self.__wavelength[0]), merge_format)
-            worksheet.write(current_row + led_count, 4, 'nm')
-            led_count += 1
+            self.led_count += 1
+            worksheet.merge_range(current_row + self.led_count, 0, current_row + self.led_count, 1, 'LED:', merge_format)
+            worksheet.merge_range(current_row + self.led_count, 2, current_row + self.led_count, 3, str(self.__wavelength[0]), merge_format)
+            worksheet.write(current_row + self.led_count, 4, 'nm')
+            
 
         if self.__ledIndex[1] == '1':
-            worksheet.merge_range(current_row + led_count, 0, current_row + led_count, 1, 'LED:', merge_format)
-            worksheet.merge_range(current_row + led_count, 2, current_row + led_count, 3, str(self.__wavelength[1]), merge_format)
-            worksheet.write(current_row + led_count, 4, 'nm')
-            led_count += 1
+            self.led_count += 1
+            worksheet.merge_range(current_row + self.led_count, 0, current_row + self.led_count, 1, 'LED:', merge_format)
+            worksheet.merge_range(current_row + self.led_count, 2, current_row + self.led_count, 3, str(self.__wavelength[1]), merge_format)
+            worksheet.write(current_row + self.led_count, 4, 'nm')
+           
 
         if self.__ledIndex[2] == '1':
-            worksheet.merge_range(current_row + led_count, 0, current_row + led_count, 1, 'LED:', merge_format)
-            worksheet.merge_range(current_row + led_count, 2, current_row + led_count, 3, str(self.__wavelength[2]), merge_format)
-            worksheet.write(current_row + led_count, 4, 'nm')
-            led_count += 1
+            self.led_count += 1
+            worksheet.merge_range(current_row + self.led_count, 0, current_row + self.led_count, 1, 'LED:', merge_format)
+            worksheet.merge_range(current_row + self.led_count, 2, current_row + self.led_count, 3, str(self.__wavelength[2]), merge_format)
+            worksheet.write(current_row + self.led_count, 4, 'nm')
+           
 
         if self.__ledIndex[3] == '1':
-            worksheet.merge_range(current_row + led_count, 0, current_row + led_count, 1, 'LED:', merge_format)
-            worksheet.merge_range(current_row + led_count, 2, current_row + led_count, 3, 'FIBER', merge_format)
-            led_count += 1
-        worksheet.merge_range(current_row + led_count, 0, current_row + led_count, 4, '-----------------------------------------',
+            self.led_count += 1
+            worksheet.merge_range(current_row + self.led_count, 0, current_row + self.led_count, 1, 'LED:', merge_format)
+            worksheet.merge_range(current_row + self.led_count, 2, current_row + self.led_count, 3, 'FIBER', merge_format)
+            
+        worksheet.merge_range(current_row + self.led_count + 1, 0, current_row + self.led_count+1, 4, '-----------------------------------------',
                               merge_format)
-        self.excel_length = current_row + led_count + 1
-        return self.excel_length
+        self.excel_length = self.excel_length + self.led_count
+        return current_row + self.excel_length - 1                              
+        # #self.excel_length = current_row + self.led_count + 1
+        # if self.led_count == 4:
+        #     #return current_row + self.led_count
+        # elif self.led_count == 3:
+        #     return current_row + self.led_count + 1
+        # elif self.led_count == 2:
+        #     return current_row + self.led_count + 2
 
     def get_dark(self, machine):
         machine.set_exposure_time(self.__expTime)
