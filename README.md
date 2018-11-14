@@ -57,7 +57,7 @@ $ git clone https://github.com/brianchowlab/OSP.git
 
 **Step 7.** *Upload OSP script onto Arduino UNO* - Using the Arduino IDE open up the OSP Arduino script located in the cloned respository folder *OSP\Software\Arduino Files\OSP_Serial_Communication*.  Make sure the Arduino is connected via USB and click the **UPLOAD** button in the Arduino IDE. 
 
-**Step 8.** ***(ONLY WINDOWS USERS)*** *Setting up Seabreeze Drivers* - Visit the following [LINK](https://github.com/ap--/python-seabreeze/blob/master/misc/windows-driver-files.zip) and download the Windows Seabreeze drivers zip file.  Extract it to a known location.  Then open up *Device Manager* on your Windows machine, find the spectrometer in the list, *right click it* and choose *Update Driver Software*.  A windows will pop up. Navigate to the folder where you extracted the Windows Seabreeze drivers file and select it. 
+**Step 8.** ***(ONLY WINDOWS USERS)*** *Setting up Seabreeze Drivers* - Visit the following [LINK](https://github.com/ap--/python-seabreeze/blob/master/misc/windows-driver-files.zip) and download the Windows Seabreeze drivers zip file.  Extract it to a known location.  Connect your computer to the OSP device via USB.  Then open up *Device Manager* on your Windows machine, find the spectrometer in the list (most likely called STS), *right click it* and choose *Update Driver Software*.  A windows will pop up. Navigate to the folder where you extracted the Windows Seabreeze drivers file and select it. 
 
 **Step 9.** *Opening the User Interface* - In order to start utilizing the OSP device, make sure the device is **turned on** and plugged in via USB to a computer.  Open up *Anaconda Prompt* and write the following lines of code:
 ```sh
