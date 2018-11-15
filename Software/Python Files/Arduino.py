@@ -18,7 +18,7 @@ class Arduino(object):
                 for p in serial.tools.list_ports.comports()
                 if 'Arduino' in p.description
             ]
-            if ser_ports == []
+            if not ser_ports:
                 ser_ports = [
                     p.device
                     for p in serial.tools.list_ports.comports()
