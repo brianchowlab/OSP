@@ -30,7 +30,7 @@ In addition, the Arduino IDE will have to be installed in order to load the OSP 
 Installation of OSP software dependencies on any Windows/Mac device is accomplished utilizing Anaconda, which should come prepackaged with all requirements except PyQt4, Seabreeze and Pyserial. The following instructions require you to write in command line. If you have never used command line visit the following [LINK (Windows)](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/) or [LINK (Mac)](https://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line)
 
 **Step 1.** *Install Anaconda* - Visit the following [LINK](https://www.anaconda.com/download/) to download the Anaconda Software.    
-> (**!!CAVEAT!!** Be sure to download the version for Python 2.X and for your specific OS environment (Windows/Mac).
+> (**CAVEAT** Be sure to download the version for Python 2.X and for your specific OS environment (Windows/Mac).
 
 **Step 2.** *Install the PyQt4 package* - Open *Anaconda Prompt* (installed with Anaconda) as an Administrator. To do this, find the Anaconda Prompt application on your computer, *right-click* it and select *Run as administrator* and type the following line of code (leave out the $):
 ```sh
