@@ -27,7 +27,7 @@ In addition, the Arduino IDE will have to be installed in order to load the OSP 
 
 
 ### Installation (Windows/Mac)
-Installation of OSP software dependencies on any Windows/Mac device is accomplished utilizing Anaconda, which should come prepackaged with all requirements except PyQt4, Seabreeze and Pyserial. The following instructions require you to write in command line. If you have never used command line visit the following [LINK (Windows)](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/) or [LINK (Mac)](https://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line)
+Installation of OSP software dependencies on any Windows/Mac device is accomplished utilizing Anaconda, which should come prepackaged with all requirements except PyQt4, Seabreeze and Pyserial. The following instructions require you to write in command line. If you have never used command line visit the following [LINK (Windows)](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/) or [LINK (Mac)](https://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line) for a quick intro.
 
 **Step 1.** *Install Anaconda* - Visit the following [LINK](https://www.anaconda.com/download/) to download the Anaconda Software.    
 > (**CAVEAT** Be sure to download the version for Python 2.X and for your specific OS environment (Windows/Mac).
@@ -47,20 +47,25 @@ $ conda install -c poehlmann python-seabreeze -y
 $ conda install -c anaconda pyserial -y
 ```
 
-**Step 5.** *Clone the OSP repository* - In *Anaconda Prompt* type the following line of code (leave out the $):
+**Step 5.** *Install the Git package* - In *Anaconda Prompt* type the following line of code (leave out the $):
+```sh
+$ conda install -c anaconda git -y
+```
+
+**Step 6.** *Clone the OSP repository* - In *Anaconda Prompt* type the following line of code (leave out the $):
 ```sh
 $ git clone https://github.com/brianchowlab/OSP.git
 ```
 
-**Step 6.** *Install Arduino IDE* -  Visit the following [LINK](https://www.arduino.cc/en/Main/Software) to download the latest Arduino IDE. 
+**Step 7.** *Install Arduino IDE* -  Visit the following [LINK](https://www.arduino.cc/en/Main/Software) to download the latest Arduino IDE. 
 
-**Step 7.** *Upload OSP script onto Arduino UNO* - Using the Arduino IDE open up the OSP Arduino script located in the cloned respository folder *OSP\Software\Arduino Files\OSP_Serial_Communication*.  Make sure the Arduino is to the OSP device and that the OSP device is connected to your computer via USB and click the **UPLOAD** button in the Arduino IDE. 
+**Step 8.** *Upload OSP script onto Arduino UNO* - Using the Arduino IDE open up the OSP Arduino script located in the cloned respository folder *OSP\Software\Arduino Files\OSP_Serial_Communication*.  Make sure the Arduino is to the OSP device and that the OSP device is connected to your computer via USB and click the **UPLOAD** button in the Arduino IDE. 
 
-**Step 8.** ***(ONLY WINDOWS USERS)*** *Setting up Seabreeze Drivers* - Visit the following [LINK](https://github.com/ap--/python-seabreeze/blob/master/misc/windows-driver-files.zip) and click the download button.  Extract the downloaded .zip file to a known location. Open up *Device Manager* on your Windows machine. Connect your computer to the OSP device via USB. In the  *Device Manager* list of devices make sure that there is now a tab named *Ocean Optics USB Devices*. In that tab should be a device named *Ocean Optics STS (WinUSB). If this device is present you can now move on to step 9.
+**Step 9.** ***(ONLY WINDOWS USERS)*** *Setting up Seabreeze Drivers* - Visit the following [LINK](https://github.com/ap--/python-seabreeze/blob/master/misc/windows-driver-files.zip) and click the download button.  Extract the downloaded .zip file to a known location. Open up *Device Manager* on your Windows machine. Connect your computer to the OSP device via USB. In the  *Device Manager* list of devices make sure that there is now a tab named *Ocean Optics USB Devices*. In that tab should be a device named *Ocean Optics STS (WinUSB). If this device is present you can now move on to step 9.
 
 If for some reason, you cannot find *Ocean Optics USB Devices* in the *Device Manager* you will have to manually set-up the drivers. To do this, in the *Device Manager* find the tab labeled *Other Devices*.  In that tab there should be a deviced named *STS*. *Right-click* on this device name and selected *Update drivers* from the drop-down menu. Next, a window will pop up asking you where the system should look for the drivers. Select the *Browse my computer for the driver software*.  On the next screen click the browse button and direct the system to the *windows-driver-files* folder which you downloaded & extracted at the beginning of this step.
 
-**Step 9.** *Opening the User Interface* - In order to start utilizing the OSP device, make sure the device is **turned on** and plugged in via USB to a computer.  Open up *Anaconda Prompt* and write the following lines of code (leave out the $):
+**Step 10.** *Opening the User Interface* - In order to start utilizing the OSP device, make sure the device is **turned on** and plugged in via USB to a computer.  Open up *Anaconda Prompt* and write the following lines of code (leave out the $):
 ```sh
 $ cd  "OSP\Software\Python Files"
 $ python GUI.py
