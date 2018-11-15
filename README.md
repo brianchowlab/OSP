@@ -6,6 +6,8 @@
 ### Introduction
 OSP is a low-cost open-source plate reader built out of the Chow Lab at the University of Pennsylvania. The software provided in this repository is required to access the full functionailty of a built OSP device. For information regarding how to build this device and details about how it works, please refer to the ACS: BioChemistry manuscript available at this [LINK](https://www.biorxiv.org/content/early/2018/09/12/413781).
 
+For information about the structure of the repository, the flow of the software, quick introduction to functions and a brief explaination of the user interface refer to the ***Software Guide.pdf*** available in the main directory of the repository. 
+
 ## GETTING STARTED 
 ### Dependencies
 The OSP software is written in Python 2.7 and utilizes the PyQt4 package to create a functional User Interface.   Below is a list of all other Python packages required to successfully use the OSP device: 
@@ -27,7 +29,7 @@ In addition, the Arduino IDE will have to be installed in order to load the OSP 
 
 
 ### Installation (Windows/Mac)
-Installation of OSP software dependencies on any Windows/Mac device is accomplished utilizing Anaconda, which should come prepackaged with all requirements except PyQt4, Seabreeze and Pyserial. The following instructions require you to write in command line. If you have never used command line visit the following [LINK (Windows)](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/) or [LINK (Mac)](https://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line) for a quick intro.
+Installation of OSP software dependencies on any Windows/Mac device is accomplished utilizing Anaconda, which should come prepackaged with all requirements except PyQt4, Seabreeze, Pyserial and Git. The following instructions require you to write in command line. If you have never used command line visit the following [LINK (Windows)](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/) or [LINK (Mac)](https://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line) for a quick intro.
 
 **Step 1.** *Install Anaconda* - Visit the following [LINK](https://www.anaconda.com/download/) to download the Anaconda Software.    
 > (**CAVEAT** Be sure to download the version for Python 2.X and for your specific OS environment (Windows/Mac).
@@ -59,7 +61,7 @@ $ git clone https://github.com/brianchowlab/OSP.git
 
 **Step 7.** *Install Arduino IDE* -  Visit the following [LINK](https://www.arduino.cc/en/Main/Software) to download the latest Arduino IDE. 
 
-**Step 8.** *Upload OSP script onto Arduino UNO* - Using the Arduino IDE open up the OSP Arduino script located in the cloned respository folder *OSP\Software\Arduino Files\OSP_Serial_Communication*.  Make sure the Arduino is to the OSP device and that the OSP device is connected to your computer via USB and click the **UPLOAD** button in the Arduino IDE. 
+**Step 8.** *Upload OSP script onto Arduino UNO* - Using the Arduino IDE open up the OSP Arduino script located in the cloned respository folder *OSP\Software\Arduino Files\OSP_Serial_Communication*.  Make sure the Arduino is plugged into the USB-hub of the OSP device and and that the OSP device is connected to your computer via USB.  Click the **UPLOAD** button in the Arduino IDE to compile and upload the code to the Arduino.
 
 **Step 9.** ***(ONLY WINDOWS USERS)*** *Setting up Seabreeze Drivers* - Visit the following [LINK](https://github.com/ap--/python-seabreeze/blob/master/misc/windows-driver-files.zip) and click the download button.  Extract the downloaded .zip file to a known location. Open up *Device Manager* on your Windows machine. Connect your computer to the OSP device via USB. In the  *Device Manager* list of devices make sure that there is now a tab named *Ocean Optics USB Devices*. In that tab should be a device named *Ocean Optics STS (WinUSB). If this device is present you can now move on to step 9.
 
@@ -113,7 +115,6 @@ Once you have completed the installation process (by following the steps above) 
   * This should result in the LED 4 turning on. To turn it off, type the same command in again.
 * Type the following into the text box at the top of the Serial Monitor and press the *Send* button: **L5;** 
   * This should result in the LED 5 & LED 6 (top) turning on. To turn them off, type the same command in again.
-
 
 
 
