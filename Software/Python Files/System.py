@@ -11,6 +11,7 @@ from Absorbance import *
 from Fluorescence import *
 from Kinetic import *
 from Auxiliary import *
+from Shake import * 
 import xlsxwriter
 import pickle
 import platform
@@ -325,6 +326,19 @@ class System(object):
         new_protocol = Auxiliary(aux_index, duration, label, plate_index, order)
         self.plateList[plate_index].add_protocol(new_protocol)
 
+    def add_shake_protocol(self, label, plate_index, order):
+        """Function to add a Shake protocol to the list of protocols to execute for a particular PlateConfiguration
+        
+        Arguments:
+            label {string} -- protocol label, should be set to 'Shake' 
+            plate_index {integer} -- index of the PlateConfiguration object in self.plateList in which to select wells
+            order {integer} -- the index of the protocol in the existing list of protocols of the plate configuration object. 
+            If this is the first protocol that is being added to the PlateConfiguration object then the order is equal to zero. If it is the second, then the order is equal to 1 and so on.
+        """
+
+        new_protocol = Shake(label, plate_index, order)
+        self.plateList[plate_index].add_protocol(new_protocol)
+
     def turn_kinetic_tracking_on(self, method, interval, duration, reps, label, plate_index, order):
         """Function to turn on the system kinetic mode. This enables the user to input protocols into a kinetic sequence
         which can be looped for a desired time period or repeated a specific number of times. 
@@ -363,6 +377,11 @@ class System(object):
 
     def add_kinetic_auxiliary_protocol(self, aux_index, duration, label, plate_index, protocol_index, order):
         new_protocol = Auxiliary(aux_index, duration, label, plate_index, order)
+        kinetic_protocol = self.plateList[plate_index].get_protocol(protocol_index)
+        kinetic_protocol.add_protocol(new_protocol)
+
+    def add_kinetic_shake_protocol(self, label, plate_index, protocol_index, order):
+        new_protocol = Shake(label, plate_index, order)
         kinetic_protocol = self.plateList[plate_index].get_protocol(protocol_index)
         kinetic_protocol.add_protocol(new_protocol)
 

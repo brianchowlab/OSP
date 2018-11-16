@@ -50,6 +50,19 @@ class Machine(object):
                 self.run = 0
         self.arduinocmd = ''
 
+    def shake(self):
+        self.arduinocmd = ''
+        self.arduinocmd = self.arduinocmd + 'S;'
+        self.arduino.write(self.arduinocmd)
+        self.run = 1
+        while self.run == 1:
+            signal = self.arduino.read()
+            print str(signal)
+
+            if str(signal) == 'done\r\n':
+                self.run = 0
+        self.arduinocmd = ''
+
     def turn_led_off(self, led_index):
         self.arduinocmd = self.arduinocmd + 'L'
         self.arduinocmd = self.arduinocmd + str(led_index) + ';'
@@ -357,60 +370,80 @@ class Machine(object):
                 #print 'M' + position + ';'
                 self.move_plate(position)
                 if w != 0:
-                    current_row = plate_index[plate_numb]
+                    if not plate_index:
+                        current_row += 1
+                    else:
+                        current_row = plate_index[plate_numb]
                 else:
                     current_row += 1
                 for p in range(0, numb_of_protocols):
                     protocol = plate.get_protocol(p)
                     if protocol.label != 'Kinetic':
-                        if w == 0:
-                            if protocol.label != 'Auxiliary':
-                                current_row = protocol.initialize_excel_section(worksheet, merge_format, header_format, current_row)
-                                current_row += 1
-                                print 'GETTING DARK'
-                                wavelengths, intensities = protocol.get_dark(self)
-                                worksheet.write(current_row, 0, 'Wavelengths', header_format)
-                                for c in range(0, len(wavelengths)):
-                                    worksheet.write(current_row, c + 1, wavelengths[c], header_format)
-                                current_row += 1
-                                worksheet.write(current_row, 0, 'Dark', header_format)
-                                for i in range(0, len(intensities)):
-                                    worksheet.write(current_row, i + 1, intensities[i])
-                                current_row += 1
-                            print 'PROTOCOL START'
-                            if protocol.label == 'Auxiliary':
-                                protocol.start(self, position)
-                            else:
-                                wavelengths, intensities = protocol.start(self)
-                            print 'PROTOCOL DONE'
-                            worksheet.write(current_row, 0, selected_well_labels[w], header_format)
-                            if protocol.label != 'Auxiliary':
-                                for i in range(0, len(intensities)):
-                                    worksheet.write(current_row, i + 1, intensities[i])
-                                if p == 0:
-                                    plate_index.append(current_row)
-
-                                current_row += len(selected_well_index) + 3
-                        else:
-                            if p != 0:
-                                current_row += len(selected_well_index) + 3 + protocol.excel_length + 3
-                            else:
-                                current_row += w
-                            print 'PROTOCOL START'
-                            if protocol.label == 'Auxiliary':
-                                protocol.start(self, position)
-                                print 'PROTOCOL DONE'
-                            else:
-                                wavelengths, intensities = protocol.start(self)
+                        if protocol.label != 'Shake':
+                            if w == 0:
+                                if protocol.label != 'Auxiliary':
+                                    current_row = protocol.initialize_excel_section(worksheet, merge_format, header_format, current_row)
+                                    current_row += 1
+                                    print 'GETTING DARK'
+                                    wavelengths, intensities = protocol.get_dark(self)
+                                    worksheet.write(current_row, 0, 'Wavelengths', header_format)
+                                    for c in range(0, len(wavelengths)):
+                                        worksheet.write(current_row, c + 1, wavelengths[c], header_format)
+                                    current_row += 1
+                                    worksheet.write(current_row, 0, 'Dark', header_format)
+                                    for i in range(0, len(intensities)):
+                                        worksheet.write(current_row, i + 1, intensities[i])
+                                    current_row += 1
+                                print 'PROTOCOL START'
+                                if protocol.label == 'Auxiliary':
+                                    protocol.start(self, position)
+                                else:
+                                    wavelengths, intensities = protocol.start(self)
                                 print 'PROTOCOL DONE'
                                 worksheet.write(current_row, 0, selected_well_labels[w], header_format)
-                                for i in range(0, len(intensities)):
-                                    worksheet.write(current_row, i + 1, intensities[i])
+                                if protocol.label != 'Auxiliary':
+                                    for i in range(0, len(intensities)):
+                                        worksheet.write(current_row, i + 1, intensities[i])
+                                    protocol_check = plate.get_protocol(0)
+                                    if protocol_check.label == 'Shake':
+                                        if p == 1:
+                                            plate_index.append(current_row)
+                                    else:
+                                        if p == 0:
+                                            plate_index.append(current_row)                                        
+
+                                    current_row += len(selected_well_index) + 3
+                            else:
+                                protocol_check = plate.get_protocol(0)
+                                if protocol_check.label == 'Shake':
+                                    if p != 1:
+                                        current_row += len(selected_well_index) + 3 + protocol.excel_length + 3
+                                    else:
+                                        current_row += w
+                                else:
+                                    if p != 0:
+                                        current_row += len(selected_well_index) + 3 + protocol.excel_length + 3
+                                    else:
+                                        current_row += w 
+                                print 'PROTOCOL START'
+                                if protocol.label == 'Auxiliary':
+                                    protocol.start(self, position)
+                                    print 'PROTOCOL DONE'
+                                else:
+                                    wavelengths, intensities = protocol.start(self)
+                                    print 'PROTOCOL DONE'
+                                    worksheet.write(current_row, 0, selected_well_labels[w], header_format)
+                                    for i in range(0, len(intensities)):
+                                        worksheet.write(current_row, i + 1, intensities[i])
+                        else:
+                            protocol.start(self)
+                            self.move_plate(position)
                     else:
                         if protocol.label != 'Auxiliary':
-                            current_row = protocol.initialize_excel_section_start(worksheet, merge_format, header_format,
-                                                                            current_row)
-                            current_row += 1
+                            if protocol.label != 'Shake':
+                                current_row = protocol.initialize_excel_section_start(worksheet, merge_format, header_format,
+                                                                                current_row)
+                                current_row += 1
                         numb_of_kinetic_protocols = protocol.get_protocol_count()
                         interval = (protocol.interval)/1000.0
                         duration = (protocol.duration)/1000.0
@@ -427,6 +460,66 @@ class Machine(object):
                                     interval_start = time.time()
                                     for kp in range(0, numb_of_kinetic_protocols):
                                         kinetic_protocol = protocol.get_protocol(kp)
+                                        if kinetic_protocol.label != 'Shake':
+                                            if w == 0:
+                                                current_row = kinetic_protocol.initialize_excel_section(worksheet, merge_format,
+                                                                                                header_format, current_row)
+                                                current_row += 1
+                                                print 'GETTING DARK'
+                                                wavelengths, intensities = kinetic_protocol.get_dark(self)
+                                                worksheet.write(current_row, 0, 'Wavelengths', header_format)
+                                                for c in range(0, len(wavelengths)):
+                                                    worksheet.write(current_row, c + 1, wavelengths[c], header_format)
+                                                current_row += 1
+                                                worksheet.write(current_row, 0, 'Dark', header_format)
+                                                for i in range(0, len(intensities)):
+                                                    worksheet.write(current_row, i + 1, intensities[i])
+                                                current_row += 1
+                                                print 'PROTOCOL START'
+                                                if protocol.label == 'Auxiliary':
+                                                    wavelengths, intensities = kinetic_protocol.start(self, position)
+                                                else:
+                                                    wavelengths, intensities = kinetic_protocol.start(self)
+                                                print 'PROTOCOL DONE'
+                                                worksheet.write(current_row, 0, selected_well_labels[w], header_format)
+                                                for i in range(0, len(intensities)):
+                                                    worksheet.write(current_row, i + 1, intensities[i])
+                                                if p == 0:
+                                                    plate_index.append(current_row)
+                                                current_row += len(selected_well_index) + 3
+                                            else:
+                                                if p != 0:
+                                                    current_row += len(selected_well_index) + 3 + protocol.excel_length + 3
+                                                else:
+                                                    current_row += w
+                                                print 'PROTOCOL START'
+                                                if protocol.label == 'Auxiliary':
+                                                    wavelengths, intensities = kinetic_protocol.start(self, position)
+                                                else:
+                                                    wavelengths, intensities = kinetic_protocol.start(self)
+                                                print 'PROTOCOL DONE'
+                                                worksheet.write(current_row, 0, selected_well_labels[w], header_format)
+                                                for i in range(0, len(intensities)):
+                                                    worksheet.write(current_row, i + 1, intensities[i])
+                                        else:
+                                            kinetic_protocol.start(self)
+                                            self.move_plate(position)
+                                        interval_on = 1
+                                    while interval_on == 1:
+                                        interval_elapsed_time = time.time()-interval_start
+                                        if interval_elapsed_time >= interval:
+                                            interval_on = 0
+                                else:
+                                    kinetic_on = 0
+                            current_row = protocol.initialize_excel_section_stop(worksheet, merge_format, header_format,
+                                                                                 current_row)
+                            current_row += 1
+
+                        elif method == 2:
+                            for r in range(0, reps):
+                                for kp in range(0, numb_of_kinetic_protocols):
+                                    kinetic_protocol = protocol.get_protocol(kp)
+                                    if kinetic_protocol.label != 'Shake':
                                         if w == 0:
                                             current_row = kinetic_protocol.initialize_excel_section(worksheet, merge_format,
                                                                                             header_format, current_row)
@@ -467,61 +560,9 @@ class Machine(object):
                                             worksheet.write(current_row, 0, selected_well_labels[w], header_format)
                                             for i in range(0, len(intensities)):
                                                 worksheet.write(current_row, i + 1, intensities[i])
-                                        interval_on = 1
-                                    while interval_on == 1:
-                                        interval_elapsed_time = time.time()-interval_start
-                                        if interval_elapsed_time >= interval:
-                                            interval_on = 0
-                                else:
-                                    kinetic_on = 0
-                            current_row = protocol.initialize_excel_section_stop(worksheet, merge_format, header_format,
-                                                                                 current_row)
-                            current_row += 1
-
-                        elif method == 2:
-                            for r in range(0, reps):
-                                for kp in range(0, numb_of_kinetic_protocols):
-                                    kinetic_protocol = protocol.get_protocol(kp)
-                                    if w == 0:
-                                        current_row = kinetic_protocol.initialize_excel_section(worksheet, merge_format,
-                                                                                        header_format, current_row)
-                                        current_row += 1
-                                        print 'GETTING DARK'
-                                        wavelengths, intensities = kinetic_protocol.get_dark(self)
-                                        worksheet.write(current_row, 0, 'Wavelengths', header_format)
-                                        for c in range(0, len(wavelengths)):
-                                            worksheet.write(current_row, c + 1, wavelengths[c], header_format)
-                                        current_row += 1
-                                        worksheet.write(current_row, 0, 'Dark', header_format)
-                                        for i in range(0, len(intensities)):
-                                            worksheet.write(current_row, i + 1, intensities[i])
-                                        current_row += 1
-                                        print 'PROTOCOL START'
-                                        if protocol.label == 'Auxiliary':
-                                            wavelengths, intensities = kinetic_protocol.start(self, position)
-                                        else:
-                                            wavelengths, intensities = kinetic_protocol.start(self)
-                                        print 'PROTOCOL DONE'
-                                        worksheet.write(current_row, 0, selected_well_labels[w], header_format)
-                                        for i in range(0, len(intensities)):
-                                            worksheet.write(current_row, i + 1, intensities[i])
-                                        if p == 0:
-                                            plate_index.append(current_row)
-                                        current_row += len(selected_well_index) + 3
                                     else:
-                                        if p != 0:
-                                            current_row += len(selected_well_index) + 3 + protocol.excel_length + 3
-                                        else:
-                                            current_row += w
-                                        print 'PROTOCOL START'
-                                        if protocol.label == 'Auxiliary':
-                                            wavelengths, intensities = kinetic_protocol.start(self, position)
-                                        else:
-                                            wavelengths, intensities = kinetic_protocol.start(self)
-                                        print 'PROTOCOL DONE'
-                                        worksheet.write(current_row, 0, selected_well_labels[w], header_format)
-                                        for i in range(0, len(intensities)):
-                                            worksheet.write(current_row, i + 1, intensities[i])
+                                        kinetic_protocol.start(self)
+                                        self.move_plate(position)
                             current_row = protocol.initialize_excel_section_stop(worksheet, merge_format,
                                                                                   header_format,
                                                                                   current_row)
@@ -532,6 +573,5 @@ class Machine(object):
     def close(self):
         self.spec.close()
         self.arduino.close()
-
 
 

@@ -19,7 +19,7 @@ from System import *
 from Screens.mainScreen import *
 from Screens.settingsScreen import *
 from Screens.wellSelectScreen24 import *
-from Screens.protocolSelectScreen import *
+from Screens.protocolSelectScreen_v2 import *
 from Screens.absScreen import *
 from Screens.flrScreen import *
 from Screens.kineticScreen import *
@@ -60,9 +60,21 @@ class GUI(System, QtGui.QWidget):
 
     def move_plate_out(self):
         self.machine.move_plate('1700.001900.00')
-        QtGui.QMessageBox.information(self, 'Message', "Insert Plate.")
+        msgBox = QtGui.QMessageBox()
+        msgBox.setText("Insert Plate.")
+        msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+        msgBox.setIcon(QtGui.QMessageBox.Information)
+        msgBox.setWindowTitle(_translate("self", "OSP", None))
+        msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+        reply = msgBox.exec_()
         self.machine.move_plate('1000.001000.00')
-        QtGui.QMessageBox.information(self, 'Message', "Plate ready.")
+        msgBox = QtGui.QMessageBox()
+        msgBox.setText("Plate ready.")
+        msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+        msgBox.setIcon(QtGui.QMessageBox.Information)
+        msgBox.setWindowTitle(_translate("self", "OSP", None))
+        msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+        reply = msgBox.exec_()   
 
     def initialize_calibration(self):
         items = ("24 Well", "96 Well")
@@ -146,6 +158,7 @@ class GUI(System, QtGui.QWidget):
         self.protocolselectionwindow.flr_button.clicked.connect(lambda: self.open_protocol(2))
         self.protocolselectionwindow.aux_button.clicked.connect(lambda: self.open_protocol(3))
         self.protocolselectionwindow.kinetic_button.clicked.connect(lambda: self.open_protocol(4))
+        self.protocolselectionwindow.shake_button.clicked.connect(lambda: self.open_protocol(5))
         self.protocolselectionwindow.new_plate_button.clicked.connect(lambda: self.add_new_plate_configuration(argVal2))
         self.protocolselectionwindow.load_button.clicked.connect(self.load_protocol_sequence)
         self.protocolselectionwindow.review_button.clicked.connect(self.review_protocols)
@@ -153,11 +166,17 @@ class GUI(System, QtGui.QWidget):
         self.protocolselectionwindow.reset_button.clicked.connect(lambda: self.reset_system(2))
 
     def load_protocol_sequence(self):
-        reply = QtGui.QMessageBox.question(self, 'Message',
-                                           "If you continue with loading a protocol sequence "
+        msgBox = QtGui.QMessageBox()
+        msgBox.setText("If you continue with loading a protocol sequence "
                                            "from a file, then the current protocol "
-                                           "sequence will be re-written.", QtGui.QMessageBox.Yes,
-                                           QtGui.QMessageBox.No)
+                                           "sequence will be re-written.")
+        msgBox.setInformativeText("Do you want to continue?")
+        msgBox.setStandardButtons(QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        msgBox.setDefaultButton(QtGui.QMessageBox.Yes)
+        msgBox.setIcon(QtGui.QMessageBox.Question)
+        msgBox.setWindowTitle(_translate("self", "OSP", None))
+        msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+        reply = msgBox.exec_()
         if reply == QtGui.QMessageBox.Yes:
             fileDir = QtGui.QFileDialog()
             fileDir.setDirectory('Protocols/')
@@ -245,6 +264,16 @@ class GUI(System, QtGui.QWidget):
                 self.kinwindow.back_button.clicked.connect(lambda: self.back_function(6, 2))
             elif self.kinetic_status == 1:
                 self.add_protocol(4)
+        elif argVal == 5: # Shaking 
+            self.add_protocol(5)
+            msgBox = QtGui.QMessageBox()
+            msgBox.setText("Shaking has been added.")
+            msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+            msgBox.setIcon(QtGui.QMessageBox.Information)
+            msgBox.setWindowTitle(_translate("self", "OSP", None))
+            msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+            reply = msgBox.exec_()
+            self.protocolselectionwindow.show()
 
     def add_protocol(self, argVal):
         if argVal == 1:  # Absorbance window
@@ -305,7 +334,13 @@ class GUI(System, QtGui.QWidget):
                     self.add_kinetic_fluorescence_protocol(exposure_time, led_index_total, wavelengths[0], wavelengths[1],
                                                    wavelengths[2], 'Fluorescence', self.current_plate, kinetic_index, order)
             else:
-                QtGui.QMessageBox.warning(self, 'Message', "You have not selected an excitation LED!")
+                msgBox = QtGui.QMessageBox()
+                msgBox.setText("You have not selected an excitation LED!")
+                msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                msgBox.setIcon(QtGui.QMessageBox.Warning)
+                msgBox.setWindowTitle(_translate("self", "OSP", None))
+                msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                reply = msgBox.exec_()
         elif argVal == 3:  # Auxiliary window
             if self.auxwindow.ctrl1_checkBox.isChecked() == 1:
                 aux_index = 1
@@ -335,7 +370,13 @@ class GUI(System, QtGui.QWidget):
                     self.add_kinetic_auxiliary_protocol(aux_index, duration, 'Auxiliary',
                                                            self.current_plate, kinetic_index, order)
             else:
-                QtGui.QMessageBox.warning(self, 'Message', "You have not selected an auxiliary port!")
+                msgBox = QtGui.QMessageBox()
+                msgBox.setText("You have not selected an auxiliary port!")
+                msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                msgBox.setIcon(QtGui.QMessageBox.Warning)
+                msgBox.setWindowTitle(_translate("self", "OSP", None))
+                msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                reply = msgBox.exec_()
         elif argVal == 4:  # Kinetic Toggle
             if self.kinetic_status == 0:  # If kinetics is being turned ON
                 kin_method = 0  # Used to keep track of which method (interval or repeat) user has checked
@@ -360,7 +401,13 @@ class GUI(System, QtGui.QWidget):
                     self.kinwindow.deleteLater()
                     self.kinetic_status = 1
                 else:
-                    QtGui.QMessageBox.warning(self, 'Message', "You have not checked a kinetic method!")
+                    msgBox = QtGui.QMessageBox()
+                    msgBox.setText("You have not checked a kinetic method!")
+                    msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                    msgBox.setIcon(QtGui.QMessageBox.Warning)
+                    msgBox.setWindowTitle(_translate("self", "OSP", None))
+                    msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                    reply = msgBox.exec_()
 
             elif self.kinetic_status == 1:  # If kinetics is being turned OFF
                 self.protocolselectionwindow.setStyleSheet(_fromUtf8("background-color: rgb(0, 122, 179);"
@@ -372,6 +419,15 @@ class GUI(System, QtGui.QWidget):
                     kinetic_protocol.get_protocol_brief_description(p)
 
                 self.kinetic_status = 0
+        elif argVal == 5: # Shake
+            if self.kinetic_status == 0:
+                order = self.plateList[self.current_plate].get_protocol_count()
+                self.add_shake_protocol('Shake', self.current_plate, order)
+            elif self.kinetic_status == 1:
+                kinetic_index = self.plateList[self.current_plate].get_protocol_count()-1
+                kinetic_protocol = self.plateList[self.current_plate].get_protocol(kinetic_index)
+                order = kinetic_protocol.get_protocol_count()
+                self.add_kinetic_shake_protocol(self.current_plate, kinetic_index, order)
 
     def review_protocols(self):
         if self.kinetic_status == 0:
@@ -388,8 +444,13 @@ class GUI(System, QtGui.QWidget):
                 self.add_items(self.reviewwindow.protocol_tree.invisibleRootItem(), p)
 
         elif self.kinetic_status == 1:
-            QtGui.QMessageBox.warning(self, 'Message', "Kinetic tracking is still on. Turn off before continuing.")
-
+            msgBox = QtGui.QMessageBox()
+            msgBox.setText("Kinetic tracking is still on. Turn off before continuing.")
+            msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+            msgBox.setIcon(QtGui.QMessageBox.Warning)
+            msgBox.setWindowTitle(_translate("self", "OSP", None))
+            msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+            reply = msgBox.exec_()
     def initialize_program(self):
         text, ok = QtGui.QInputDialog.getText(self, 'Text Input Dialog', 'Enter filename:')
         if ok:
@@ -401,15 +462,33 @@ class GUI(System, QtGui.QWidget):
             self.reviewwindow.deleteLater()
             self.__init__(1)
             self.load_calibration_data(24)
-            QtGui.QMessageBox.information(self, 'Message', "Protocol finished. System Reset!")
+            msgBox = QtGui.QMessageBox()
+            msgBox.setText("Protocol finished. System Reset!")
+            msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+            msgBox.setIcon(QtGui.QMessageBox.Information)
+            msgBox.setWindowTitle(_translate("self", "OSP", None))
+            msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+            reply = msgBox.exec_()
         elif argVal == 1:
             self.reviewwindow.deleteLater()
             self.__init__(1)
-            QtGui.QMessageBox.information(self, 'Message', "System Reset!")
+            msgBox = QtGui.QMessageBox()
+            msgBox.setText("System Reset!")
+            msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+            msgBox.setIcon(QtGui.QMessageBox.Information)
+            msgBox.setWindowTitle(_translate("self", "OSP", None))
+            msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+            reply = msgBox.exec_()
         elif argVal == 2:
             self.protocolselectionwindow.deleteLater()
             self.__init__(1)
-            QtGui.QMessageBox.information(self, 'Message', "System Reset!")
+            msgBox = QtGui.QMessageBox()
+            msgBox.setText("System Reset!")
+            msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+            msgBox.setIcon(QtGui.QMessageBox.Information)
+            msgBox.setWindowTitle(_translate("self", "OSP", None))
+            msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+            reply = msgBox.exec_()    
 
     def add_items(self, parent, item_numb):
         column = 0
@@ -447,6 +526,8 @@ class GUI(System, QtGui.QWidget):
                 protocol = self.add_child(protocol_item, column, protocol_name, '')
                 self.add_subchild(protocol, column, 'Duration: ' + str(protocol_object.get_duration()) + ' ms', '')
                 self.add_subchild(protocol, column, 'Port #: ' + str(protocol_object.get_aux_index()), '')
+            elif protocol_name == 'Shake':
+                protocol = self.add_child(protocol_item, column, protocol_name, '')
             elif protocol_name == 'Kinetic':
                 protocol = self.add_child(protocol_item, column, protocol_name, '')
                 protocol_settings = self.add_child(protocol, column, 'Settings', '')
@@ -477,6 +558,9 @@ class GUI(System, QtGui.QWidget):
                         self.add_subchild(protocol, column, 'Duration: ' + str(kinetic_protocol.get_duration()) + ' ms',
                                           '')
                         self.add_subchild(protocol, column, 'Port #: ' + str(kinetic_protocol.get_aux_index()), '')
+                    elif kinetic_protocol_name == 'Shake':
+                        protocol = self.add_child(protcol_item, column, kinetic_protocol_name, '')
+
 
     def get_current_item(self, argVal):
         current_item = self.reviewwindow.protocol_tree.currentItem()
@@ -493,8 +577,14 @@ class GUI(System, QtGui.QWidget):
                 if item_index == 0:  # Well configuration edit selected
                     self.edit_protocol_selection(1, int(item_plate), -1)
                 elif item_index == 1:  # Plate Protocol header item selected
-                    QtGui.QMessageBox.warning(self, 'Message', "You cannot do that. Please select a specific protocol "
+                    msgBox = QtGui.QMessageBox()
+                    msgBox.setText("You cannot do that. Please select a specific protocol "
                                                                "or plate configutation to edit.")
+                    msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                    msgBox.setIcon(QtGui.QMessageBox.Warning)
+                    msgBox.setWindowTitle(_translate("self", "OSP", None))
+                    msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                    reply = msgBox.exec_()
             elif current_item_parent_label.split(' ')[0] == 'Kinetic':
                 current_item_grandparent = current_item_parent.parent()
                 current_item_grand_grandparent = current_item_grandparent.parent()
@@ -629,35 +719,34 @@ class GUI(System, QtGui.QWidget):
             protocol_led = protocol_obj.get_led_index()
 
             self.flrwindow.expTime_singWave_spinBox.setValue(protocol_obj.get_exposure_time())
-
-            if protocol_led == 1:
+            if protocol_led[0] == '1': 
                 self.flrwindow.led1_checkBox.setChecked(True)
                 self.flrwindow.led1_checkBox.setEnabled(True)
-                self.flrwindow.led2_checkBox.setEnabled(False)
-                self.flrwindow.led3_checkBox.setEnabled(False)
-                self.flrwindow.led4_checkBox.setEnabled(False)
-                self.flrwindow.ledOn = 1
-            elif protocol_led == 2:
-                self.flrwindow.led1_checkBox.setEnabled(False)
+                # self.flrwindow.led2_checkBox.setEnabled(False)
+                # self.flrwindow.led3_checkBox.setEnabled(False)
+                # self.flrwindow.led4_checkBox.setEnabled(False)
+                self.flrwindow.ledOn = protocol_led
+            elif protocol_led[1] == '1': 
+                # self.flrwindow.led1_checkBox.setEnabled(False)
                 self.flrwindow.led2_checkBox.setEnabled(True)
                 self.flrwindow.led2_checkBox.setChecked(True)
-                self.flrwindow.led3_checkBox.setEnabled(False)
-                self.flrwindow.led4_checkBox.setEnabled(False)
-                self.flrwindow.ledOn = 2
-            elif protocol_led == 3:
-                self.flrwindow.led1_checkBox.setEnabled(False)
-                self.flrwindow.led2_checkBox.setEnabled(False)
+                # self.flrwindow.led3_checkBox.setEnabled(False)
+                # self.flrwindow.led4_checkBox.setEnabled(False)
+                self.flrwindow.ledOn = protocol_led
+            elif protocol_led[2] == '1': 
+                # self.flrwindow.led1_checkBox.setEnabled(False)
+                # self.flrwindow.led2_checkBox.setEnabled(False)
                 self.flrwindow.led3_checkBox.setEnabled(True)
                 self.flrwindow.led3_checkBox.setChecked(True)
-                self.flrwindow.led4_checkBox.setEnabled(False)
-                self.flrwindow.ledOn = 3
-            elif protocol_led == 4:
-                self.flrwindow.led1_checkBox.setEnabled(False)
-                self.flrwindow.led2_checkBox.setEnabled(False)
-                self.flrwindow.led3_checkBox.setEnabled(False)
+                # self.flrwindow.led4_checkBox.setEnabled(False)
+                self.flrwindow.ledOn = protocol_led
+            elif protocol_led[3] == '1':
+                # self.flrwindow.led1_checkBox.setEnabled(False)
+                # self.flrwindow.led2_checkBox.setEnabled(False)
+                # self.flrwindow.led3_checkBox.setEnabled(False)
                 self.flrwindow.led4_checkBox.setEnabled(True)
                 self.flrwindow.led4_checkBox.setChecked(True)
-                self.flrwindow.ledOn = 4
+                self.flrwindow.ledOn = protocol_led
         elif protocol_type == 4:
             self.reviewwindow.hide()
             self.auxwindow = auxScreen()
@@ -773,7 +862,13 @@ class GUI(System, QtGui.QWidget):
                 self.flrwindow.deleteLater()
                 protocol_check = 1
             else:
-                QtGui.QMessageBox.warning(self, 'Message', "You have not selected an excitation LED!")
+                msgBox = QtGui.QMessageBox()
+                msgBox.setText("You have not selected an excitation LED!")
+                msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                msgBox.setIcon(QtGui.QMessageBox.Warning)
+                msgBox.setWindowTitle(_translate("self", "OSP", None))
+                msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                reply = msgBox.exec_()
         elif protocol_type == 4:
             plate_obj = self.plateList[plate_numb]
             protocol_obj = plate_obj.get_protocol(protocol_index)
@@ -795,7 +890,13 @@ class GUI(System, QtGui.QWidget):
                 self.auxwindow.deleteLater()
                 protocol_check = 1
             else:
-                QtGui.QMessageBox.warning(self, 'Message', "You have not selected an auxiliary port!")
+                msgBox = QtGui.QMessageBox()
+                msgBox.setText("You have not selected an auxiliary port!")
+                msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                msgBox.setIcon(QtGui.QMessageBox.Warning)
+                msgBox.setWindowTitle(_translate("self", "OSP", None))
+                msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                reply = msgBox.exec_()
         elif protocol_type == 6:
             plate_obj = self.plateList[plate_numb]
             protocol_obj = plate_obj.get_protocol(protocol_index)
@@ -814,7 +915,13 @@ class GUI(System, QtGui.QWidget):
                 self.kinwindow.deleteLater()
                 protocol_check = 1
             else:
-                QtGui.QMessageBox.warning(self, 'Message', "You have not selected kinetic method!")
+                msgBox = QtGui.QMessageBox()
+                msgBox.setText("You have not selected kinetic method!")
+                msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                msgBox.setIcon(QtGui.QMessageBox.Warning)
+                msgBox.setWindowTitle(_translate("self", "OSP", None))
+                msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                reply = msgBox.exec_()
 
         if protocol_check != 0:
             self.reviewwindow = reviewScreen()
@@ -973,7 +1080,13 @@ class GUI(System, QtGui.QWidget):
                 self.flrwindow.deleteLater()
                 protocol_check = 1
             else:
-                QtGui.QMessageBox.warning(self, 'Message', "You have not selected an excitation LED!")
+                msgBox = QtGui.QMessageBox()
+                msgBox.setText("You have not selected an excitation LED!")
+                msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                msgBox.setIcon(QtGui.QMessageBox.Warning)
+                msgBox.setWindowTitle(_translate("self", "OSP", None))
+                msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                reply = msgBox.exec_()
         elif protocol_type == 4:
             plate_obj = self.plateList[plate_numb]
             kinetic_obj = item_kinetic_obj
@@ -996,7 +1109,13 @@ class GUI(System, QtGui.QWidget):
                 self.auxwindow.deleteLater()
                 protocol_check = 1
             else:
-                QtGui.QMessageBox.warning(self, 'Message', "You have not selected an auxiliary port!")
+                msgBox = QtGui.QMessageBox()
+                msgBox.setText("You have not selected an auxiliary port!")
+                msgBox.setStandardButtons(QtGui.QMessageBox.Ok)
+                msgBox.setIcon(QtGui.QMessageBox.Warning)
+                msgBox.setWindowTitle(_translate("self", "OSP", None))
+                msgBox.setWindowIcon(QtGui.QIcon("Images/logo_icon.png"))
+                reply = msgBox.exec_()
 
         if protocol_check != 0:
             self.reviewwindow = reviewScreen()
