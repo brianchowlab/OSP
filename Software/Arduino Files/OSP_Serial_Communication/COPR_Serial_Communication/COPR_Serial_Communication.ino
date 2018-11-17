@@ -172,32 +172,6 @@ void loop() {
             }
           Serial.println("done");           
           }
-        else if (protocolString.substring(startIndex, startIndex+1) == "P"){
-          pumpNumb = protocolString.substring(startIndex+1,startIndex+2).toInt();
-          pumpDur = protocolString.substring(startIndex+2,i).toInt();
-          if (pumpNumb == 1){
-            digitalWrite(10,HIGH);
-            delay(.200);
-            delay(pumpDur+325);
-            digitalWrite(10,LOW);
-            delay(.200);     
-            while (digitalRead(A1) == 1){
-              continue;
-            }
-            delay(10000);
-          }
-          else if (pumpNumb == 2){
-            digitalWrite(12,HIGH);
-            delay(.200);
-            delay(pumpDur+500);
-            digitalWrite(12,LOW);
-            delay(.200);     
-            while (digitalRead(A2) == 1){
-              continue;
-            }
-            delay(10000);          
-          }
-        }
          else if (protocolString.substring(startIndex, startIndex+1) == "C"){
           if (protocolString.substring(startIndex+1, i-1) == "F"){
               MotorY.writeMicroseconds(1450);
@@ -259,9 +233,6 @@ void loop() {
               Serial.print(colLeft);
               Serial.print(";");
               Serial.println(colRight);
-            }
-            else if (protocolString.substring(startIndex+1, i) == "P"){
-              Serial.println(analogRead(A0));
             }
             else if(protocolString.substring(startIndex+1, startIndex+2) == "T"){
               newX = protocolString.substring(startIndex+2,i-4).toInt();
