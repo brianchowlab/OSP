@@ -8,20 +8,23 @@ OSP is a low-cost open-source plate reader built out of the Chow Lab at the Univ
 
 ## Contents
 The repository is divided into two main components: (1) Hardware & (2) Software
+        
+* [**HARDWARE**](https://github.com/brianchowlab/OSP/tree/master/Hardware)
 
-* **HARDWARE**
-  * ***CAD FILES*** 
-  * ***LASER CUT FILES***
-  * ***PCB FILES***
+    All the files required for assembly of the OSP device are in this folder. The full *Assembly Guide* can be found here as a PDF.
+  * [***CAD FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/CAD%20Files)
+  * [***LASER CUT FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/Laser%20Cut%20Files)
+  * [***PCB FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/PCB%20Files)
+* [**SOFTWARE**](https://github.com/brianchowlab/OSP/tree/master/Software)
 
-* **SOFTWARE**
-  * ***ARDUINIO FILES***
-  * ***GRAPHICAL FILES***
-  * ***PYTHON FILES***
-    * Data
-    * Protocols
-    * Screens
-    * System Settings
+    All the files for installation and execution of the OSP software are in this folder. The full *Software Guide* can be found here as a PDF.
+  * [***ARDUINIO FILES***](https://github.com/brianchowlab/OSP/tree/master/Software/Arduino%20Files/OSP_Serial_Communication/COPR_Serial_Communication)
+  * [***GRAPHICAL FILES***](https://github.com/brianchowlab/OSP/tree/master/Software/Graphical%20Files)
+  * [***PYTHON FILES***](https://github.com/brianchowlab/OSP/tree/master/Software/Python%20Files)
+    * Data - Folder where all data from the OSP device is saved as .xlsx files.
+    * Protocols - Folder where any protocol sequence is saved. 
+    * Screens - Python files for all GUI screens
+    * System Settings - Folder where are all files associated with settings are contained.
   
 
 
