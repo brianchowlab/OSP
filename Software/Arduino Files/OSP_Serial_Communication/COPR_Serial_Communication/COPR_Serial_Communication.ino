@@ -260,12 +260,38 @@ void loop() {
         else if(protocolString.substring(startIndex, startIndex+1) == "M"){
           newX = protocolString.substring(startIndex+1,i-7).toInt();
           newY = protocolString.substring(startIndex+8,i).toInt();
-          timeWait = 5000+(abs(currentX-newX)/1000.00)*10000;
-          currentX = newX;
-          Serial.println(newX);
+          int search_valX = 645-(((newX - 1000.00)/1000.00)*645);
+          int search_valY = 645-(((newY - 1000.00)/1000.00)*645);
           MotorX.writeMicroseconds(newX);
           MotorY.writeMicroseconds(newY);
-          delay(timeWait);
+          int waitX = 1;
+          int waitY = 1;
+          int old_X = analogRead(A5);
+          int old_Y = analogRead(A4);
+          int feedback_X;
+          int feedback_Y;
+          int count_X = 0;
+          int count_Y = 0;
+          while((waitX == 1) || (waitY == 1)){
+            feedback_X = analogRead(A5);
+            feedback_Y = analogRead(A4);
+            if((feedback_X < old_X+2) && (feedback_X > old_X - 2)){
+               count_X += 1;
+               if(count_X == 5){
+                waitX = 0;
+               }
+               
+            }
+            if((feedback_Y < old_Y+2) && (feedback_Y > old_Y - 2)){
+               count_Y += 1;
+               if(count_Y == 5){
+                waitY = 0;
+               }
+            }
+            old_X = feedback_X;
+            old_Y = feedback_Y;
+            delay(150);
+          }
           Serial.println("done");
         }
         else if(protocolString.substring(startIndex, startIndex+1) == "S"){
