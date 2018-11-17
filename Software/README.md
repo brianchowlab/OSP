@@ -23,9 +23,9 @@ In addition, the Arduino IDE will have to be installed in order to load the OSP 
 ### Installation (Windows/Mac)
 Installation of OSP software dependencies on any Windows/Mac device is accomplished utilizing Anaconda, which should come prepackaged with all requirements except PyQt4, Seabreeze, Pyserial and Git. The following instructions require you to write in command line. If you have never used command line visit the following [LINK (Windows)](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/) or [LINK (Mac)](https://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line) for a quick intro.
 
-**Step 1.** *Install Anaconda* - Visit the following [LINK](https://www.anaconda.com/download/) to download the Anaconda Software. Be sure to download the version for Python 2.X and for your specific OS environment (Windows/Mac).
+**Step 1.** *Install Anaconda* - Visit the following [LINK](https://www.anaconda.com/download/) to download the Anaconda Software. Be sure to download the version for Python 2.X and for your specific OS environment (Windows/Mac). When prompted whether to ***add Anaconda to your path*** select yes. 
 
-**Step 2.** *Install Git* - Visit the following [LINK](https://git-scm.com/download/win) to download the Anaconda Software. Be sure to download the version for your specific OS environment (Windows/Mac).
+**Step 2.** *Install Git* - Visit the following [LINK](https://git-scm.com/download) to download the Anaconda Software. Be sure to download the version for your specific OS environment (Windows/Mac).  When prompted whether to ***add Git to your path*** select yes. 
 
 **Step 3.** *Clone the OSP repository* - Open the Terminal on your computer as an administrator. To do this, find the Terminal application, *right-click* it and select *Run as administrator*. To clone the repository onto your system type the following lines of code (Make sure to use the ones specific to your OS):
 
@@ -45,12 +45,12 @@ git clone https://github.com/brianchowlab/OSP.git
 
 ***WINDOWS***
 ```sh
-.\OSP\install_pc_reqs.sh
+.\OSP\Software\install_pc_reqs.sh
 ```
 
 ***MAC***
 ```sh
-./OSP/install_pc_reqs.sh
+./OSP/Software/install_pc_reqs.sh
 ```
 
 **Step 5.** *Install Arduino IDE* -  Visit the following [LINK](https://www.arduino.cc/en/Main/Software) to download the latest Arduino IDE. 
