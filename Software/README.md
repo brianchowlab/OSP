@@ -138,4 +138,7 @@ The following steps should be followed everytime a calibration is performed:
 ### Loading a Plate
 
 The orientation in which you load the plate is important not only for the calibration process but also for any sort of measurement performed on the OSP device. Please refer to the below picture to ensure you are loading the plate correctly.  The plate should be held firmly in place with attached springs. 
+<p align="center">
+<img align="center" src="https://github.com/brianchowlab/OSP/blob/master/Software/Graphical%20Files/plate_loading_alignment.png>
+</p>
 
