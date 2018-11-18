@@ -126,6 +126,7 @@ The software provided in this repository comes with pre-loaded with calibrated p
 Before performing any sort of calibration you will need to prepare the calibration lid for the specific plate-type that is to be calibrated. Refer to the *Calibration Lid Assembly* at the end of the *General Assembly Guide* for instructions on how to do this.
 
 The following steps should be followed everytime a calibration is performed:
+
 **Step 1.** *Attach Fiber to Photodiode* - Deattach the fiber from the STS spectrophotometer and screw it into the photodiode mount rigth next to it. 
 
 **Step 2.** *Adjust the Iris* -  As part of the Top Optics assembly there is an iris. Using the guidelines on the rim of the iris, set the iris to a size of 2. 
