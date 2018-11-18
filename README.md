@@ -11,7 +11,7 @@ The repository is divided into two main components: (1) Hardware & (2) Software
         
 * [**HARDWARE**](https://github.com/brianchowlab/OSP/tree/master/Hardware)
 
-    All the files required for assembly of the OSP device are in this folder. The full *Assembly Guide* can be found here as a PDF.
+    All the files required for assembly of the OSP device are in this folder. All the instructions on how to assemble the OSP device can be found in the *ASSEMBLY FILES* directory.
   * [***CAD FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/CAD%20Files)
   * [***LASER CUT FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/Laser%20Cut%20Files)
   * [***PCB FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/PCB%20Files)
