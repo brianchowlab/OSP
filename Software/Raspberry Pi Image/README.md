@@ -1,81 +1,10 @@
 # OSP: An Open-source Plate Reader 
 
-## SOFTWARE - GETTING STARTED 
-### Dependencies
-The OSP software is written in Python 2.7 and utilizes the PyQt4 package to create a functional User Interface.   Below is a list of all other Python packages required to successfully use the OSP device: 
+## RASBPERRY PI IMAGE - LINK BELOW 
 
-* PyQt 4
-* Seabreeze
-* Numpy
-*	Pickle
-* Platform
-* Xlswriter
-*	Matplotlib
-*	Time 
-*	Serial
-*	Warnings
+[DISK IMAGE FILE (Updated Nov. 18, 2018)](https://www.dropbox.com/s/7g2e63knupe5y7j/osp_rasp.img?dl=0)
 
-In addition, the Arduino IDE will have to be installed in order to load the OSP Arduino script (provided int this repository) onto the device's Arduino UNO board. 
-
-**The installation section below will guide you through installing all these dependencies and any programs required**
-
-
-### Installation (Windows/Mac)
-Installation of OSP software dependencies on any Windows/Mac device is accomplished utilizing Anaconda, which should come prepackaged with all requirements except PyQt4, Seabreeze, Pyserial and Git. The following instructions require you to write in command line. If you have never used command line visit the following [LINK (Windows)](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/) or [LINK (Mac)](https://blog.teamtreehouse.com/introduction-to-the-mac-os-x-command-line) for a quick intro.
-
-**Step 1.** *Install Anaconda* - Visit the following [LINK](https://www.anaconda.com/download/) to download the Anaconda Software. Be sure to download the version for Python 2.X and for your specific OS environment (Windows/Mac). When prompted whether to ***add Anaconda to your path*** select yes. 
-
-**Step 2.** *Install Git* - Visit the following [LINK](https://git-scm.com/download) to download the Anaconda Software. Be sure to download the version for your specific OS environment (Windows/Mac).  When prompted whether to ***add Git to your path*** select yes. 
-
-**Step 3.** *Clone the OSP repository* - Open the Terminal on your computer as an administrator. To do this, find the Terminal application, *right-click* it and select *Run as administrator*. To clone the repository onto your system type the following lines of code (Make sure to use the ones specific to your OS):
-
-***WINDOWS***
-```sh
-cd %USERPROFILE%
-git clone https://github.com/brianchowlab/OSP.git
-```
-
-***MAC***
-```sh
-cd ~
-git clone https://github.com/brianchowlab/OSP.git
-```
-
-**Step 4.** *Run the OSP installation script* - In the open Terminal window type the following and leave the window open:
-
-***WINDOWS***
-```sh
-.\OSP\Software\install_pc_reqs.sh
-```
-
-***MAC***
-```sh
-./OSP/Software/install_pc_reqs.sh
-```
-
-**Step 5.** *Install Arduino IDE* -  Visit the following [LINK](https://www.arduino.cc/en/Main/Software) to download the latest Arduino IDE. 
-
-**Step 6.** *Upload OSP script onto Arduino UNO* - Using the Arduino IDE open up the OSP Arduino script located in the cloned respository folder *OSP\Software\Arduino Files\OSP_Serial_Communication*.  Make sure the Arduino is plugged into the USB-hub of the OSP device and and that the OSP device is connected to your computer via USB.  Click the **UPLOAD** button in the Arduino IDE to compile and upload the code to the Arduino.
-
-**Step 7.** ***(ONLY WINDOWS USERS)*** *Setting up Seabreeze Drivers* - Visit the following [LINK](https://github.com/ap--/python-seabreeze/blob/master/misc/windows-driver-files.zip) and click the download button.  Extract the downloaded .zip file to a known location. Open up *Device Manager* on your Windows machine. Connect your computer to the OSP device via USB. In the  *Device Manager* list of devices make sure that there is now a tab named *Ocean Optics USB Devices*. In that tab should be a device named *Ocean Optics STS (WinUSB). If this device is present you can now move on to step 9.
-
-If for some reason, you cannot find *Ocean Optics USB Devices* in the *Device Manager* you will have to manually set-up the drivers. To do this, in the *Device Manager* find the tab labeled *Other Devices*.  In that tab there should be a deviced named *STS*. *Right-click* on this device name and selected *Update drivers* from the drop-down menu. Next, a window will pop up asking you where the system should look for the drivers. Select the *Browse my computer for the driver software*.  On the next screen click the browse button and direct the system to the *windows-driver-files* folder which you downloaded & extracted at the beginning of this step.
-
-**Step 8.** *Opening the User Interface* - In order to start utilizing the OSP device, make sure the device is **turned on** and plugged in via USB to a computer.  In your open Terminal window type the following:
-
-***WINDOWS***
-```sh
-activate osp
-cd "OSP\Software\Python Files"
-python GUI.py
-```
-
-***MAC***
-```sh
-source activate osp
-cd "OSP\Software\Python Files"
-python GUI.py
-```
+## Instructions for referrence:
 
 ### Installation (Raspberry-Pi Image)
 The simplest way to install the OSP software on a Raspberry-Pi is by downloading and installing the OSP.img file provided. In order to do this, you will need to have a completely empty 16GB Micro SD Card. If the card is not empty, all of its contents will be deleted in the installation of the OSP.img file. In addition, the first 3 installation steps need to be performed on a computer/laptop with an SD card slot. 
