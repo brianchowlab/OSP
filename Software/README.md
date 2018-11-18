@@ -96,6 +96,7 @@ $ git pull origin master
 $ cd  "OSP\Software\Python Files"
 $ sudo python GUI.py
 ```
+## SOFTWARE - Before Running a Protocol
 
 ### Initial Functionality Testing
 Once you have completed the installation process (by following the steps above) it is usefull to check if all the light sources (LEDs) and linear actuators as behaving correctly. These tests can be performed from the Arduino IDE *Serial Monitor*. 
