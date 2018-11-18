@@ -15,6 +15,7 @@ The repository is divided into two main components: (1) Hardware & (2) Software
   * [***CAD FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/CAD%20Files)
   * [***LASER CUT FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/Laser%20Cut%20Files)
   * [***PCB FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/PCB%20Files)
+  * [***ASSEMBLY FILES***](https://github.com/brianchowlab/OSP/tree/master/Hardware/Assembly%20Files)
 * [**SOFTWARE**](https://github.com/brianchowlab/OSP/tree/master/Software)
 
     All the files for installation and execution of the OSP software are in this folder. The full *Software Guide* can be found here as a PDF.
