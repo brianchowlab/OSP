@@ -122,7 +122,7 @@ Once you have completed the installation process (by following the steps above) 
   
 ### Calibration Guide
 The software provided in this repository comes with pre-loaded with calibrated positions for a 24-well plate and a 96-well plate. However, it is recommended that an initial calibration is performed after the OSP device is built to account for any small differences in assembly. 
-
+ se
 Before performing any sort of calibration you will need to prepare the calibration lid for the specific plate-type that is to be calibrated. Refer to the *Calibration Lid Assembly* at the end of the *General Assembly Guide* for instructions on how to do this.
 
 The following steps should be followed everytime a calibration is performed:
@@ -131,7 +131,11 @@ The following steps should be followed everytime a calibration is performed:
 
 **Step 2.** *Adjust the Iris* -  As part of the Top Optics assembly there is an iris. Using the guidelines on the rim of the iris, set the iris to a size of 2. 
 
-**Step 3.** *Insert plate into OSP device* - Place the calibration lid onto an empty micro-well plate and insert it into the device. (To move the holder near the door, press the *plate out* button on the GUI). 
+**Step 3.** *Insert plate into OSP device* - Place the calibration lid onto an empty micro-well plate and insert it into the device, such that well A1 is in the top left corner of the plate holder. (To move the plate holder near the door, press the *plate out* button on the GUI). 
 
-**Step 4.** *Initialize calibration* - On the GUI press the *Calibrate* button and when prompted input the size of the micr-well plate (24 or 96). The machine will begin the calibration process and alert you when it is finished. **This process takes around 3 minutes**
+**Step 4.** *Initialize calibration* - On the GUI press the *Calibrate* button and when prompted input the size of the micro-well plate (24 or 96). The machine will begin the calibration process and alert you when it is finished. **This process takes around 3 minutes**
+
+### Loading a Plate
+
+The orientation in which you load the plate is important not only for the calibration process but also for any sort of measurement performed on the OSP device. Please refer to the below picture to ensure you are loading the plate correctly.  The plate should be held firmly in place with attached springs. 
 
