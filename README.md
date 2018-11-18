@@ -26,6 +26,6 @@ The repository is divided into two main components: (1) Hardware & (2) Software
     * Protocols - Folder where any protocol sequence is saved. 
     * Screens - Python files for all GUI screens
     * System Settings - Folder where are all files associated with settings are contained.
-  
+    * Raspberry Pi Image - Contains the link to the Raspberry-Pi image file. 
 
 
