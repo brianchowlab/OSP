@@ -123,7 +123,7 @@ Once you have completed the installation process (by following the steps above) 
   
 ### Calibration Guide
 The software provided in this repository comes with pre-loaded with calibrated positions for a 24-well plate and a 96-well plate. However, it is recommended that an initial calibration is performed after the OSP device is built to account for any small differences in assembly. 
- se
+
 Before performing any sort of calibration you will need to prepare the calibration lid for the specific plate-type that is to be calibrated. Refer to the *Calibration Lid Assembly* at the end of the *General Assembly Guide* for instructions on how to do this.
 
 The following steps should be followed everytime a calibration is performed:
