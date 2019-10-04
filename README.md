@@ -4,7 +4,7 @@
 </p>
 
 ## Introduction
-OSP is a low-cost open-source plate reader built out of the Chow Lab and the George H. Stephenson Foundation Bioengineering Laboratory & Bio-MakerSpace at the University of Pennsylvania. The software provided in this repository is required to access the full functionailty of a built OSP device. For information regarding how to build this device and details about how it works, please refer to the ACS: BioChemistry manuscript available at this [LINK](https://www.biorxiv.org/content/early/2018/09/12/413781).
+OSP is a low-cost open-source plate reader built out of the [Chow Lab](http://chowlab.seas.upenn.edu/) and the [George H. Stephenson Foundation Bioengineering Educational Laboratory & Bio-MakerSpace](https://belabs.seas.upenn.edu/) at the University of Pennsylvania. The software provided in this repository is required to access the full functionailty of a built OSP device. For information regarding how to build this device and details about how it works, please refer to the ACS: BioChemistry manuscript available at this [LINK](https://www.biorxiv.org/content/early/2018/09/12/413781).
 
 ## Contents
 The repository is divided into two main components: (1) Hardware & (2) Software
